@@ -1,9 +1,10 @@
 import express from "express";
 import Client from "../models/clientModel.js";
+import { authenticateToken } from "../utilities/auth.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", authenticateToken, (req, res) => {
   Client.find({})
     .sort("-totalBill")
     .limit(1)

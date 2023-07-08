@@ -1,6 +1,6 @@
 import { app } from "./app.js";
 
-const port = process.env.NODE_ENV === "production" ? process.env.PORT : 3000;
+const port = process.env.NODE_ENV === "production" ? process.env.PORT : 8800;
 const url =
   process.env.NODE_ENV === "production"
     ? "https://agency-client-crud-backend.onrender.com"

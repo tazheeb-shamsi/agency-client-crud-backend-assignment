@@ -1,11 +1,12 @@
 import express from "express";
 import Agency from "../models/agencyModel.js";
 import Client from "../models/clientModel.js";
+import { authenticateToken } from "../utilities/auth.js";
 
 const router = express.Router();
 
 // API TO GET ALL AGENCIES
-router.get("/", (req, res) => {
+router.get("/", authenticateToken, (req, res) => {
   Agency.find()
     .then((agencies) => {
       res.status(200).json(agencies);
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
 });
 
 // API TO FIND AGENCY BY ID
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticateToken, (req, res) => {
   Agency.findOne(req.params._id)
     .then((agency) => {
       if (agency) {
@@ -31,7 +32,7 @@ router.get("/:id", (req, res) => {
 });
 
 // API TO ADD AN AGENCY
-router.post("/addAgency", (req, res) => {
+router.post("/addAgency", authenticateToken, (req, res) => {
   const newAgency = new Agency(req.body);
   newAgency
     .save()
@@ -44,7 +45,7 @@ router.post("/addAgency", (req, res) => {
 });
 
 // API TO ADD AGENCY ALONG WITH CLIENT
-router.post("/", (req, res) => {
+router.post("/", authenticateToken, (req, res) => {
   const { agency, client } = req.body;
   const newAgency = new Agency(agency);
   newAgency
@@ -65,7 +66,7 @@ router.post("/", (req, res) => {
 });
 
 // API TO UPDATE AN AGENCY
-router.put("/:id", (req, res) => {
+router.put("/:id", authenticateToken, (req, res) => {
   Agency.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((agency) => {
       if (agency) {
@@ -80,7 +81,7 @@ router.put("/:id", (req, res) => {
 });
 
 // API TO UPDATE AN AGENCY AND ITS ASSOCIATED CLIENTS
-router.delete("/:agencyId", async (req, res) => {
+router.delete("/:agencyId", authenticateToken, async (req, res) => {
   const { agencyId } = req.params;
 
   try {

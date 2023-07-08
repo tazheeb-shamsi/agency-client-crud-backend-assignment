@@ -1,10 +1,11 @@
 import express from "express";
 import Client from "../models/clientModel.js";
+import { authenticateToken } from "../utilities/auth.js";
 
 const router = express.Router();
 
 // API TO GET ALL CLIENTS
-router.get("/", (req, res) => {
+router.get("/", authenticateToken, (req, res) => {
   Client.find()
     .then((clients) => {
       res.status(200).json(clients);
@@ -15,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 // API TO FIND CLIENT BY ID
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticateToken, (req, res) => {
   Client.findById(req.params.id)
     .then((client) => {
       if (client) {
@@ -30,7 +31,7 @@ router.get("/:id", (req, res) => {
 });
 
 // API TO ADD A CLIENT
-router.post("/", (req, res) => {
+router.post("/", authenticateToken, (req, res) => {
   const newClient = new Client(req.body);
   newClient
     .save()
@@ -43,7 +44,7 @@ router.post("/", (req, res) => {
 });
 
 // API TO UPDATE A CLIENT
-router.put("/:id", (req, res) => {
+router.put("/:id", authenticateToken, (req, res) => {
   Client.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((client) => {
       if (client) {
@@ -58,7 +59,7 @@ router.put("/:id", (req, res) => {
 });
 
 // API TO DELETE A CLIENT
-router.delete("/:clientId", async (req, res) => {
+router.delete("/:clientId", authenticateToken, async (req, res) => {
   const { clientId } = req.params;
 
   try {
