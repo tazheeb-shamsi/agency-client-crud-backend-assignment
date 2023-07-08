@@ -61,9 +61,9 @@ MONGODB_URI=mongodb://localhost/agency-client-crud
 npm start
 ```
 
-### API Documentation
+## API Documentation
 
-## Agency Endpoints
+### Agency Endpoints
 
 ```bash
 GET api/agency: Get all agencies
@@ -73,7 +73,7 @@ PUT api/agency/:agencyId: Update an agency by ID
 DELETE api/agency/:agencyId: Delete an agency by ID
 ```
 
-## Client Endpoints
+### Client Endpoints
 
 ```bash
 GET api/client: Get all clients
@@ -83,13 +83,13 @@ PUT api/client/:clientId: Update a client by ID
 DELETE api/clients/:clientId: Delete a client by ID
 ```
 
-## Create Agency along with Client Endpoint
+### Create Agency along with Client Endpoint
 
 ```bash
 POST api/agency: Create a new agency and client simultaneously
 ```
 
-## Top Client Endpoint
+### Top Client Endpoint
 
 ```bash
 GET api/topClient: Get the top client(s) with the maximum total bill
