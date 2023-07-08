@@ -24,30 +24,30 @@ This is the backend server for the Agency Client CRUD project. It provides RESTf
 
 ### Installation
 
-## 1. Clone the repository:
+#### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/tazheeb-shamsi/agency-client-crud-backend-assignment
 
 ```
 
-## 2. Change directory & Install dependencies:
+#### 2. Change directory & Install dependencies:
 
-# Change directory
-
-```bash
-        cd agency-client-crud-backend
-```
-
-# Install dependencies
+##### Change directory
 
 ```bash
-    npm install
+cd agency-client-crud-backend
 ```
 
-## 3. Set up environment variables:
+##### Install dependencies
 
-# Create a .env file in the root directory and provide the necessary environment variables. For example:
+```bash
+npm install
+```
+
+#### 3. Set up environment variables:
+
+##### Create a .env file in the root directory and provide the necessary environment variables. For example:
 
 ```bash
 PORT=3000
@@ -55,7 +55,7 @@ MONGODB_URI=mongodb://localhost/agency-client-crud
 
 ```
 
-## 4. Start the server:
+#### 4. Start the server:
 
 ```bash
 npm start
@@ -94,3 +94,12 @@ POST api/agency: Create a new agency and client simultaneously
 ```bash
 GET api/topClient: Get the top client(s) with the maximum total bill
 ```
+
+
+## Contributing
+###### Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit a pull request or open an issue.
+
+## License
+This project is licensed under the MIT License.
+
+Feel free to pull and use this  for your Node projects.
